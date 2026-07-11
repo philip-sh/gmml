@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Vec2",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Vec2",
+  "parent":{
+    "name":"Classes",
+    "path":"folders/Scripts/Classes.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

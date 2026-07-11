@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Raycaster",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Raycaster",
+  "parent":{
+    "name":"Classes",
+    "path":"folders/Scripts/Classes.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

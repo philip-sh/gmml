@@ -1,0 +1,1 @@
+//if (DEBUG) draw_self();

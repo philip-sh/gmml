@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gmml"
+version = "0.1.0"
+description = "A reusable, ML-Agents-style framework for training RL agents in GameMaker games"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "gymnasium>=0.29",
+    "stable-baselines3>=2.0",
+    "numpy>=1.23",
+    "pyyaml>=6.0",
+    "tensorboard>=2.10",
+]
+
+[project.scripts]
+gmml = "gmml.cli:main"
+
+[tool.setuptools]
+packages = ["gmml"]

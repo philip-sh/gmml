@@ -1,0 +1,28 @@
+# physics driven drone agent
+behavior: drone
+algo: PPO
+total_timesteps: 2000000
+
+vectorized: true
+
+hyperparameters:
+  policy: MlpPolicy
+  net_arch: [64, 64]
+  learning_rate: 0.0003
+  n_steps: 256
+  batch_size: 2304
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  ent_coef: 0.0
+
+self_play:
+  enabled: false
+
+output:
+  run_dir: runs/drone
+  checkpoint_every: 100000
+
+connection:
+  host: localhost
+  port: 5555
