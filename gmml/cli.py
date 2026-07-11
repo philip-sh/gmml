@@ -3,7 +3,7 @@ gmml command-line interface.
 
     gmml train  --config configs/yourconfig.yaml [--resume | --resume-from CKPT]
     gmml infer  --config configs/yourconfig.yaml [--model PATH]
-    gmml export --config configs/yourconfig.yaml [--format onnx]
+    gmml export --config configs/yourconfig.yaml [--format gmpolicy]
 
 Any config field can be overridden with '--set key.path=value'.
 """
@@ -43,7 +43,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     e = sub.add_parser("export", help="export a policy for in-engine inference")
     _add_common(e)
-    e.add_argument("--format", choices=FORMATS, default="onnx", help="export format")
+    e.add_argument("--format", choices=FORMATS, default="gmpolicy", help="export format")
     e.add_argument("--model", help="policy path (default: <run_dir>/<final_name>)")
     e.add_argument("--out", help="output file path")
 

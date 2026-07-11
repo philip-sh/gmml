@@ -21,6 +21,7 @@
     {"name":"RaycastHit","order":3,"path":"scripts/RaycastHit/RaycastHit.yy",},
     {"name":"scr_collision","order":5,"path":"scripts/scr_collision/scr_collision.yy",},
     {"name":"scr_custom_particles","order":9,"path":"scripts/scr_custom_particles/scr_custom_particles.yy",},
+    {"name":"scr_gmml_inference","order":11,"path":"scripts/scr_gmml_inference/scr_gmml_inference.yy",},
     {"name":"scr_raycasts","order":7,"path":"scripts/scr_raycasts/scr_raycasts.yy",},
     {"name":"scr_utility","order":3,"path":"scripts/scr_utility/scr_utility.yy",},
     {"name":"Vec2","order":2,"path":"scripts/Vec2/Vec2.yy",},

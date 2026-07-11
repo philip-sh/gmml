@@ -1,9 +1,9 @@
 if (point_in_rectangle(mouse_x, mouse_y, arena.x1, arena.y1, arena.x2, arena.y2)) {
 	var _str_l = string("vel:\nvel mag:\nang vel:\nwaypoint time:"),
 		_str_r = string("{0}, {1}\n{2}\n{3}\n{4}", 
-			string_format(round(phy_speed_x), 4, 0), string_format(round(phy_speed_y), 4, 0),
-			string_format(round(point_distance(0, 0, phy_speed_x, phy_speed_y)), 4, 0),
-			string_format(round(phy_angular_velocity), 4, 0),
+			string_format(phy_speed_x, 3, 1), string_format(phy_speed_y, 3, 1),
+			string_format(point_distance(0, 0, phy_speed_x, phy_speed_y), 3, 1),
+			string_format(phy_angular_velocity, 3, 1),
 			string_format(waypoint_time_max - waypoint_time, 2, 1)
 		);
 	

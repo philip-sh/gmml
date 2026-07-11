@@ -68,3 +68,20 @@ __gmml_collect = function() {
     episode_done = false;
     return _rec;
 };
+
+// --- For in-engine inference -----------------------------------------
+
+gmml_observe = function() { 
+	__obs = [];
+	collect_observations();
+	return __obs;
+}
+
+gmml_policy_step = function(_policy) {
+	on_action(gmpolicy_predict(_policy, gmml_observe()));
+	if (episode_done) {
+		agent_reset();
+		episode_done = false;
+		reward = 0;
+	}
+}
