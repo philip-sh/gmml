@@ -12,7 +12,7 @@ GameMaker (TCP server)                  Python (client)
     obj_gmml_agent                          Gymnasium + Stable-Baselines3
 ```
 
-The engine owns everything domain-specific. There is no per-game Python code to write.
+The engine owns everything domain-specific so there's no per-game Python code to write.
 
 ---
 
@@ -151,7 +151,7 @@ Then write a config with a matching `behavior:` and train.
 
 ## Shipping a trained policy
 
-`gmml infer` needs Python running alongside the game (duh), which is fine for development but not really viable for
+`gmml infer` needs Python running alongside the game, which is fine for development but not really viable for
 a release build. Export instead:
 
 ```bash
