@@ -11,6 +11,8 @@ import os
 import sys
 import tempfile
 
+import yaml
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from gmml.config import load_config          # noqa: E402
@@ -19,6 +21,16 @@ from tests.mock_gm_server import MockGameMakerServer   # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CONFIGS = os.path.join(os.path.dirname(HERE), "configs")
+
+
+def _write_config(run_dir, cfg):
+    """Write a behavior config into 'run_dir' and return its path. Fixtures live inside the
+    test so the suite does not depend on the example configs in configs/, which a user is
+    free to edit or delete."""
+    path = os.path.join(run_dir, "behavior.yaml")
+    with open(path, "w", encoding="utf-8") as f:
+        yaml.safe_dump(cfg, f)
+    return path
 
 
 def _tiny(overrides, port, run_dir):
@@ -40,8 +52,12 @@ def test_train_discrete():
         agents=[{"agent_id": "1", "behavior": "platformer", "obs_size": 13}],
     )
     with tempfile.TemporaryDirectory() as d:
-        cfg = load_config(os.path.join(CONFIGS, "platformer.yaml"),
-                          _tiny([], srv.port, d))
+        cfg_path = _write_config(d, {
+            "behavior": "platformer",
+            "algo": "PPO",
+            "hyperparameters": {"net_arch": [16, 16]},
+        })
+        cfg = load_config(cfg_path, _tiny([], srv.port, d))
         train(cfg)
         assert os.path.exists(os.path.join(d, "final_policy.zip"))
     srv.stop()
@@ -56,8 +72,13 @@ def test_train_selfplay():
                 {"agent_id": "2", "behavior": "topdown", "obs_size": 26}],
     )
     with tempfile.TemporaryDirectory() as d:
-        cfg = load_config(os.path.join(CONFIGS, "topdown.yaml"),
-                          _tiny(["self_play.swap_every=32"], srv.port, d))
+        cfg_path = _write_config(d, {
+            "behavior": "topdown",
+            "algo": "PPO",
+            "hyperparameters": {"net_arch": [16, 16]},
+            "self_play": {"enabled": True},
+        })
+        cfg = load_config(cfg_path, _tiny(["self_play.swap_every=32"], srv.port, d))
         train(cfg)
         assert os.path.exists(os.path.join(d, "final_policy.zip"))
         # self-play pool got seeded + a snapshot

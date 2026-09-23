@@ -6,3 +6,6 @@ docs/
 
 venv/
 .venv/
+
+# GameMaker build exports
+/*.zip

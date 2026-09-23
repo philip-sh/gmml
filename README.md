@@ -124,7 +124,7 @@ Create a child of `obj_gmml_agent` and fill in four things in its Create event:
 
 ```gml
 event_inherited();
-behavior_name = "drone";                  // match the bahavior_name in your config
+behavior_name = "drone";                  // match the behavior_name in your config
 gmml_set_spec(17, gmml_continuous(2));    // 17 observations, 2 continuous actions
                                           // or gmml_discrete([3, 2]) for branched choices
 
@@ -183,7 +183,8 @@ tests/          pytest suite, runs against a mock engine (no GameMaker needed)
 runs/           training output: checkpoints, tensorboard logs, final policy
 ```
 
-Run the tests with `pytest tests`.
+Run the tests with `pip install -e ".[dev]"` followed by `pytest tests`. The suite drives a mock
+engine, so GameMaker does not need to be running.
 
 ## Status
 
